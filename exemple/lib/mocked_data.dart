@@ -15,52 +15,33 @@ List<Color> colors = [
   Colors.teal,
 ];
 
-List<SectionModel> mockedSections = List.generate(
-    10,
-    (index) => SectionModel(
-          sectionIndex: index,
-          sectionHeader: Container(
-            height: 60.0,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: colors[(index + 5) % colors.length],
-                width: 2.0,
+List<CombinedItem> items = List<CombinedItem>.generate(
+  10,
+  (index) {
+    return CombinedItem(
+        header: SizedBox(
+          child: Center(
+            child: Container(
+              margin: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: colors[index % colors.length],
               ),
-              color: colors[(index + 3) % colors.length],
-            ),
-            child: Center(
-              child: Text('Section $index'),
+              padding: const EdgeInsets.all(6.0),
+              child: Text('Item $index'),
             ),
           ),
-          horizontalMenuTitle: Container(
-            padding: const EdgeInsets.all(4.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
-              color: colors[index % colors.length],
-            ),
-            child: Text(
-              'Section $index',
-              style: TextStyle(color: Colors.black26),
-            ),
+        ),
+        body: Container(
+          margin: const EdgeInsets.all(4.0),
+          height: 399,
+          decoration: BoxDecoration(
+            color: colors[index % colors.length],
           ),
-          horizontalSelectedMenuTitle: Container(
-            padding: const EdgeInsets.all(4.0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black26),
-              borderRadius: BorderRadius.circular(5.0),
-              color: Colors.white,
-            ),
-            child: Text(
-              'Section $index',
-            ),
-          ),
-          sectionItems: List.generate(
-            10,
-            (index) => Container(
-              padding: const EdgeInsets.all(16.0),
-              color: colors[index % colors.length],
-              child: Center(child: Text('Item $index')),
-            ),
+          child: Text(
+            'Section $index',
+            style: TextStyle(color: Colors.black26),
           ),
         ));
+  },
+);
